@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title>Упражнение 2</title>
+</head>
+<body>
+    <div>
+        <h2>Creating a chart</h2>
+            <p class="creating-a-chart-text">
+                To create a chart, we need to instantiate the <kbd id="chart-class-word">Chart</kbd> class.
+                To do this, we need to pass in the 2d context of where we want to draw the chart. Here's an
+                example.
+            </p>
+            <div class="creating-a-chart-example">
+                <code>
+                    <span class="tagstyle">&lt;canvas</span>
+                    <span class="parameterstyle">id=<span class="valuestyle">&quot;myChart&quot;</span>
+                    <span class="parameterstyle">width=</span><span class="valuestyle">&quot;400&quot;</span>
+                    <span class="parameterstyle">height=</span><span class="valuestyle">&quot;400&quot;</span>
+                    <span class="tagstyle">&gt;</span><span class="tagstyle">&lt;/canvas&gt;</span>
+                </code>
+            </div>
+            <div class="creating-a-chart-example">
+                <code>
+                    <span class="commentstyle">// Get the context of the canvas element we want to select</span><br>
+                    <span class="boldstyle">var</span> ctx = <span class="doc-word-blue">document</span>.getElementById(<span class="valuestyle">&quot;myChart&quot;</span>).getContext(<span class="valuestyle">&quot;2d&quot;</span>);<br>
+                    <span class="boldstyle">var</span> myNewChart = <span class="boldstyle">new</span> Chart(ctx).PolarArea(data);
+                </code>
+            </div>
+            <p class="creating-a-chart-text">
+                We can also get the context of our canvas with jQuery. To do this, we need to
+                get the DOM node out of the jQuery collection, and call the
+                <kbd id="chart-class-word">getContext("2d")</kbd> method on that.
+            </p>
+            <div class="creating-a-chart-example">
+                <code>
+                    <span class="commentstyle">// Get context with jQuery - using jQuery's .get() method.</span><br>
+                    <span class="boldstyle">var</span> ctx = $(<span class="valuestyle">&quot;#myChart</span>).het(0).getContext(<span class="valuestyle">&quot;2d</span>);<br>
+                    <span class="commentstyle">// This will get the first returned node in the jQuery collection</span><br>
+                    <span class="boldstyle">var</span> myNewChart = <span class="boldstyle">new</span> Chart(ctx);<br>
+                </code>
+            </div>
+    </div>
+</body>
+</html>

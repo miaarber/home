@@ -1,0 +1,48 @@
+#task-5 {
+	width: 400px;
+	margin: 20px;
+}
+
+#sales {
+	float: left;
+	width: 65%;
+}
+
+#sale-title {
+	font-size: 17px;
+}
+
+#alarm-img {
+	width: 18px;
+	float: left;
+	margin-right: 12px;
+}
+
+#term {
+	color: red;
+	margin-top: 10px;
+}
+
+#until {
+	font-size: 20px;
+}
+
+#discount {
+	float: right;
+	width: 20%;
+	border: 2px dashed red;
+	border-radius: 10px;
+	padding: 0 10px;
+}
+
+#percent {
+	font-size: 30px;
+	color: red;
+}
+
+.sales-text {
+	font-weight:bold;
+	font-size: 16px;
+	margin: 5px 0;
+
+}

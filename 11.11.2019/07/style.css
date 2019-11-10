@@ -1,0 +1,51 @@
+p {
+	text-align: center;
+    margin-top: 0px;
+    padding-top: 16px;
+}
+#archive-word {
+	text-transform: uppercase;
+}
+
+#archive {
+	padding: 0;
+	float: left;
+	background-color: #bcbcbc;
+	border-radius: 10px 10px 0 0;
+}
+
+#archive-title {
+	width: 250px;
+	height: 50px;
+	background-color: #017754;
+	color: #ffffff;
+	border-radius: 10px 10px 0 0;
+}
+#month-name {
+	padding-bottom: 16px;
+	background-color: black;
+	color: white;
+
+}
+
+.days-list {
+	width: 200px;
+}
+
+.days-list-item {
+	list-style: none;
+	float: left;
+	margin: 5px;
+	padding: 4px;
+
+}
+
+.days-list-before {
+}
+.days-list-current{
+	color: white;
+	background-color: #017754;
+}
+.days-list-after {
+	color: gray;
+}

@@ -1,0 +1,40 @@
+#chart-class-word {
+	color: black;
+	background-color: #fafafa;
+    border-radius: 4px;
+    padding: 4px 4px;
+}
+
+.creating-a-chart-text {
+	color: #555555;
+	width: 96%;
+}
+
+.creating-a-chart-example {
+	background-color: #fafafa;
+    border-radius: 4px;
+    padding: 4px 4px 4px 8px;
+	margin: 10px 10px 10px 0px;
+	width: 96%;
+}
+
+.tagstyle {
+	color: #000088;
+}
+
+.parameterstyle {
+	color: #006600;
+}
+
+.valuestyle {
+	color: #ff0000;
+}
+
+.commentstyle {
+	color: #79877a;
+	font-style: italic;
+}
+
+.boldstyle {
+	font-weight: bold;
+}

@@ -1,0 +1,45 @@
+#task-6 {
+	padding: 0;
+	float:left;
+	margin: 20px 0;
+	border-bottom: 2px solid #cbcbcb;
+}
+
+.pagination-list {
+	list-style: none;
+	padding-left: 0;
+}
+
+.pagination-item {
+	color: #68a9c9;
+	float: left;
+	margin: 6px;
+}
+
+.pagination-item a {
+	color: #68a9c9;
+	padding: 4px;
+}
+
+.pagination-item a:hover,
+.pagination-item a:focus,
+.pagination-item a:active {
+	background-color: #ff6a24;
+	padding: 4px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.pagination-item-current a {
+	background-color: #ff6a24;
+	padding: 4px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.pagination-item-current a:hover,
+.pagination-item-current a:focus,
+.pagination-item-current a:active {
+	background-color: #ff6a24;
+	padding: 4px;
+}
