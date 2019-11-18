@@ -7,60 +7,249 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Chessboard with figures</title>
     <style>
-        body {
-            margin: 0;
-            width: 100vmin;
+body {
+    margin: 0;
+}
+
+.chessboard {
+    width: 102vmin;
+    height: 102vmin;
+}
+
+/* Весь блок с буквами */
+.literas {
+    float: left;
+}
+
+.literas div {
+    height: 10vmin;
+    width: 10vmin;
+
+    text-align: center;
+    line-height: 10vmin;
+
+}
+
+.literas:first-child {
+    border-right: 1px solid red; 
+}
+
+.odd div:nth-child(even) {
+    background: red;
+}
+
+.odd div:last-child {
+    background: white;
+}
+
+.even div:nth-child(odd) {
+    background: red;
+}
+
+.even div:first-child {
+    background: white;
+}
+
+.even div:nth-child(3) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 103%;
+}
+
+.even div:nth-child(8) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 103%;
+    background-position-y: 100%; 
+}
+
+.odd div:nth-child(3) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 103%;}
+
+.odd div:nth-child(8) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 103%;
+    background-position-y: 100%; 
+}
+
+
+.literas:last-child {
+    border-left: 1px solid red; 
+}
+
+/* Блоки с цифрами 1-8 */
+.numbers {
+    width: 10vmin;
+    text-align: center;
+    line-height: 10vmin;
+}
+.numbers:first-child {
+    border-bottom: 1px solid red;
+}
+
+.numbers:last-child {
+    border-top: 1px solid red;
+}
+
+/*         Нечетные блоки */        
+.odd {
+    display: inline-block;
+    float: left;
         }
 
-        .chessboard {
-            width: 100vmin;
-            height: 100vmin;
-        }
 
-        /* Весь блок с буквами */
-        .literas {
-            float: left;
-        }
-        .literas div {
-            height: 10vmin;
-            width: 10vmin;
-            background: green;
-            text-align: center;
-        }
+.odd div {
+    height: 10vmin;
+    width: 10vmin;
+}
 
-        /* Блоки с цифрами 1-8 */
-        .numbers {
-            height: 10vmin;
-            width: 10vmin;
-            text-align: center;
-        }
+/* Четные блоки */
+.even {
+    float: left;
+    height: 10vmin;
+    width: 10vmin; 
+}
+.even div {
+    height: 10vmin;
+    width: 10vmin;
+}
 
-        /* Нечетные блоки */
-        .odd {
-            float: left;
-        }
-        .odd div {
-            height: 10vmin;
-            width: 10vmin;
-            background: yellow;
-        }
+/*Размещение castle*/
+.even div:nth-of-type(2)[title^="castle"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 41%; 
+}
 
-        /* Четные блоки */
-        .even {
-            float: left;
-            height: 10vmin;
-            width: 10vmin; 
-        }
-        .even div {
-            height: 10vmin;
-            width: 10vmin;
-            background: red;
-        }
+.odd div:nth-of-type(2)[title^="castle"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 41%; 
+}
 
-        .odd div[title^="pawn"],
-        .even div[title^="pawn"] {
-            background-image: url("images/chess.png");
-        }
+.even div:nth-of-type(9)[title^="castle"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 41%; 
+    background-position-y: 100%;
+}
+
+.odd div:nth-of-type(9)[title^="castle"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 41%; 
+    background-position-y: 100%;
+}
+   
+
+.even div:nth-of-type(2) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%; 
+}
+
+/*.odd:nth-child(2) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%;*/ 
+}
+
+.even div:nth-of-type(9) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%; 
+    background-position-y: 100%;
+}
+
+.odd div:nth-of-type(9) {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%; 
+    background-position-y: 100%;
+}
+   
+
+
+/*        .even div[title^="horse"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%; 
+}
+              .even div[title^="elefant"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 61.5%; 
+}
+
+                .even div[title^="king"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: -1.5%; 
+}
+
+                .even div[title^="queen"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 19.5%; 
+}*/
+
+
+/*.odd div[title^="castle"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 41%; 
+    background-position-y: 100%; 
+}*/
+/*        .odd div[title^="horse"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 83%; 
+    background-position-y: 100%; 
+}
+              .odd div[title^="elefant"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 61.5%; 
+    background-position-y: 100%; 
+}
+
+                .odd div[title^="king"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: -1.5%;
+    background-position-y: 100%; 
+}
+
+                .odd div[title^="queen"] {
+    background-image: url("images/chess.png");
+    background-size: 650%;
+    background-repeat: no-repeat;
+    background-position-x: 19.5%; 
+    background-position-y: 100%; 
+}*/
     </style>
 </head>
 
