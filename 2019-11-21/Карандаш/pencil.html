@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Карандаш</title>
+	<style>
+		body {
+			margin: 0;
+			width: 100%;
+		}
+		
+		/* Блок со всем карандашом полностью */
+		.pencil {
+			width: 100%;
+			height: 100px;
+		}
+
+		/*Стержень */
+		.rod {
+			float: left;
+			margin-right: 27px;
+			background: #ff0;
+			background: linear-gradient(to bottom,
+			#ff0, #ff0 35%,
+			#cdcd00 35%, #cdcd00 65%,
+			#ff0 65%, #ff0);
+			height: 100px;
+			width: 80%;
+		}
+
+		.point-lead {
+			float: left;
+			width: 10%;
+		}
+
+		/* Острие */
+		.point {
+			float: left;
+			margin-right: -70px;
+			margin-left: -50px;
+			margin-top: -14px;
+			width: 0px;
+			height: 0px;
+			/* Рамка с цветом #a62525*/
+			border-style: solid; 
+			border-width: 64px 20px 64px 100px;
+			border-color: transparent transparent transparent #a62525;
+			border-radius: 100px;
+		}
+
+		 /*Грифель*/ 
+		.lead {
+			float: left;
+			width: 0px;
+			height: 0px;
+			margin-top: 18px;
+			/*margin-right: -100px;*/
+			/* Рамка с цветом #000*/
+			border-style: solid; 
+			border-width: 32px 10px 32px 50px;
+			border-color: transparent transparent transparent #000;
+			border-radius: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="pencil">
+	<div class="rod"></div>
+	<div class="point-lead">
+		<div class="point"></div>
+		<div class="lead"></div>
+	</div>
+	</div>
+</body>
+</html>
