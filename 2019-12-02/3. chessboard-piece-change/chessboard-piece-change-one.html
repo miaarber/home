@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Изменение цвета фигуры по клику</title>
+    <style>
+        body {background-color: black;}
+        #piece-change-one {display: none;}
+        .square-with-piece {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+        #piece-change-one + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: 9px;
+        }
+
+        #piece-change-one:checked + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="piece-change-one" name="piece-change-one">
+    <label for="piece-change-one">
+        <div class="square-with-piece"></div>   
+    </label>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Смена фигур по клику</title>
+    <style>
+        /* Состояния 12 кликов
+        CLICK 01: черный ферзь
+        CLICK 02: черный король
+        CLICK 03: черная ладья
+        CLICK 04: черный офицер
+        CLICK 05: черный конь
+        CLICK 06: черная пешка
+        ..........................
+        CLICK 07: белый ферзь
+        CLICK 08: белый король
+        CLICK 09: белая ладья
+        CLICK 10: белый офицер
+        CLICK 11: белый конь
+        CLICK 12: белая пешка */
+        body {background-color: black;}
+        #piece-change-all {display: none;}
+        .square-with-piece {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        #piece-change-all + label>div {
+            background-image: url(click.jpg);
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+        }
+        /* CLICK 01: черный ферзь/королева */
+        #piece-change-all:checked + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: -94px;
+        }
+        /* CLICK 02: черный король */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: 10px;
+        } */
+        /* CLICK 03: черная ладья */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: -202px;
+        } */
+        /* CLICK 04: черный офицер/слон */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: -307px;
+        } */
+        /* CLICK 05: черный конь */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: -417px;
+        } */
+        /* CLICK 06: черная пешка */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: 4px;
+            background-position-x: -521px;
+        } */
+        /* CLICK 07: белый ферзь/королева */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: 10px;
+        } */
+        /* CLICK 08: белый король */
+        /* #piece-change-all:checked + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: 10px;
+        } */
+        /* CLICK 09: белая ладья */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: -202px;
+        } */
+        /* CLICK 10: белый офицер/слон */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: -307px;
+        } */
+        /* CLICK 11: белый конь */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: -417px;
+        } */
+        /* CLICK 12: белая пешка */
+        /* #piece-change-all + label>div {
+            background-image: url(chess.png);
+            background-size: 600%;
+            background-repeat: no-repeat;
+            background-position-y: -97px;
+            background-position-x: -521px;
+        } */
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="piece-change-all" name="piece-change-all">
+    <label for="piece-change-all">
+        <div class="square-with-piece"></div>   
+    </label>
+</body>
+</html>

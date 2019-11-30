@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Сверстать карандаш</title>
+    <style>
+        /* Используем: 
+        1) псевдоэлементы ::before и ::after
+        2) позиционирование */
+
+        .pencil {
+            width: 80vw;
+            height: 60px;
+            background: #ff0;
+            background: linear-gradient(to bottom,
+                    #ff0, #ff0 35%,
+                    #cdcd00 35%, #cdcd00 65%,
+                    #ff0 65%, #ff0);
+        }
+        .pencil::before {
+            display: block;
+            content: "";
+            width: 0;
+            height: 0;
+            float: right;
+            position: relative;
+            right: -50px;
+            top: -8px;
+
+            border-color: transparent;
+            border-left-width: 60px;
+            border-top-width: 38px;
+            border-bottom-width: 38px;
+            border-radius: 50%;
+            border-left-color: brown;
+            border-style: solid;
+        }
+        .pencil::after {
+            display: block;
+            content: "";
+            width: 0;
+            height: 0;
+            float: right;
+            position: relative;
+            right: -112px;
+            bottom: -11px;
+
+            border-color: transparent;
+            border-radius: 50%;
+            border-left-width: 30px;
+            border-top-width: 19px;
+            border-bottom-width: 19px;
+            border-left-color: black;
+            border-style: solid;
+        } 
+    </style>
+</head>
+<body>
+    <h1>Сверстать карандаш, не меняя содержимого контейнера body с помощью position: relative</h1>
+    <div class="pencil"></div>
+</body>
+</html>

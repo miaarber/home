@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Сверстать формулы, используя относительное позиционирование</title>
+    <style>
+        #magic-formulas {list-style-type: none; padding: 0;}
+        #magic-formulas>li:nth-child(1)>span {position: relative; top: -5px; font-size: 0.8em;}
+        #magic-formulas>li:nth-child(2)>span {position: relative; top: 4px; font-size: 0.8em;}
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Волшебные формулы</h2>
+            <ul id="magic-formulas">
+                <li>(x+y)<span>3</span> = x<span>3</span>+3x<span>2</span>y+3xy<span>2</span>+y<span>3</span></li>
+                <li>&#916;x<span>1</span>+&#916;x<span>2</span>+...+&#916;x<span>n</span> = &#931;&#916;x<span>k</span></li>
+                <li>Если &forall; x &#8712; R такого, что &#124;x&#124; 1 &#8707; y &ge; 1, то &#958; &lt; &infin;</li>
+            </ul>
+    </div>
+</body>
+</html>
