@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ООО "Рога и копыта" - заготовка кожи и всего остального</title>
+    <style>
+        /* РАЗМЕРЫ И ЦВЕТА БЛОКОВ:
+            header 
+                820*100 #ff7f7f
+            Логотип 
+                180*60 #ffc17f
+            aside 
+                180*? #ff7ffe
+            Выпадающее меню 
+                155*50 #b2b2b2
+            main
+                640*?
+            footer 
+                820*130 #7fffff
+        */
+        input {
+            display: none;
+        }
+        header {
+            width: 820px;
+            min-height: 100px;
+            background-color: #ff7f7f;
+            position: relative;
+        }
+        /* Логотип */
+        header>div {
+            width: 180px;
+            min-height: 60px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background-color: #ffc17f;
+
+            padding-left: 35px;
+            padding-top: 13px;
+            text-transform: lowercase;
+        }
+/* ====================================================== */
+        /* Меню в header */
+        header>ul {
+            position: absolute;
+            right: 30px;
+            top: 60px;
+
+            font-weight: bold;
+        }
+        header>ul>li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        /* Вакансии */
+        header>ul>li:nth-child(3) {
+            display: inline-block;
+            margin-right: 0;
+            position: relative;
+        }
+        /* Список собственно вакансий */
+        header>ul>li:nth-child(3)>ul {
+            display: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+        }
+        header>ul>li:nth-child(3):hover>ul,
+        #vacancies:checked~ul {
+            display: block;
+        }
+        header>ul>li:nth-child(3)::after {
+            content: "";
+            display: block;
+
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 5px;
+            border-color: #000000 transparent transparent transparent;
+
+            position: absolute;
+            left: 80px;
+            top: 7px;
+        }
+/* =========================================================== */
+        aside {
+            width: 205px;
+            height: 100vh;
+            float: left;
+            position: relative;
+            padding: 20px 0 0 20px;
+            background-color: #ff7ffe;
+        }
+        /* Каталог в aside */
+        aside>ul>li>ul {
+            display: none;
+            min-width: 155px;
+            min-height: 50px;
+            position: absolute;
+            left: 205px;
+            top: 0;
+            padding: 2px 0 0 10px;
+            background-color: #b2b2b2;
+            color: blue;
+            text-decoration: underline;
+            list-style: none;
+        }
+        aside>ul,
+        aside>div {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: blue;
+            text-decoration: underline;
+        }
+        aside>ul>li {
+            margin-top: 5px;
+            position: relative;
+        }
+
+        aside>ul>li:hover>ul,
+        #horns:checked~ul,
+        #hoofs:checked~ul,
+        #leather:checked~ul {
+            display: block;
+        }
+        aside>ul>li::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 10px;
+            border-color: transparent transparent transparent blue;
+            position: absolute;
+            top: 5px;
+            left: 195px;
+}
+
+/* ============================================================ */
+        main {
+            width: 600px;
+            height: 100vh;
+            float: left;
+            background-color: white;
+        }
+        footer {
+            width: 820px;
+            height: 130px;
+            background-color: #7fffff;
+            clear: both;
+
+            text-align: center;
+            line-height: 130px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div>Logo</div>
+        <ul>
+            <li>О компании</li>
+            <li>Доставка</li>
+            <li><label for="vacancies">Вакансии</label>
+                <input type="checkbox" id="vacancies">
+                <ul>
+                    <li>Заготовщик кожи</li>
+                    <li>Заготовщик рогов</li>
+                    <li>Заготовщик копыт</li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <aside>
+        <div>Каталог</div>
+        <ul>
+            <li><label for="horns">Рога</label>
+                <input type="checkbox" id="horns">
+                <ul>
+                    <li>Бараньи</li>
+                    <li>Оленьи</li>
+                </ul>
+            </li>
+            <li><label for="hoofs">Копыта</label>
+                <input type="checkbox" id="hoofs">
+                <ul>
+                    <li>Бараньи</li>
+                    <li>Оленьи</li>
+                    <li>Свиные</li>
+                </ul>
+            </li>
+            <li><label for="leather">Кожа</label>
+                <input type="checkbox" id="leather">
+                <ul>
+                    <li>Крокодила</li>
+                    <li>Чебурашки</li>
+                    <li>Старухи шапокляк</li>
+                </ul></li>
+        </ul>
+    </aside>
+    <main>
+<!-- Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main.
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. 
+        Контент main. Контент main. Контент main. Контент main. -->
+    </main>
+    <footer>&copy; 2019</footer>
+</body>
+</html>

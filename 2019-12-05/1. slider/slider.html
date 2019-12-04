@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Фотогалерея</title>
+	<style>
+		input {
+			display: none;
+		}
+		.prevSlide::before {
+			display: block;
+			content: "";
+			border: 20px solid transparent;
+			border-right: 20px solid green;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+
+		.nextSlide::before {
+			display: block;
+			content: "";
+			border: 20px solid transparent;
+			border-left: 20px solid green;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		#slider {
+			min-height: 400px;;
+		}
+		.slide {
+            min-width: 400px;
+			position: relative;
+			text-align: center;
+			display: none;
+		}
+	
+		#one:checked~#slider>.slide:nth-child(1) {
+			display: block;
+		}
+		#one~#slider>.pins>label[for=one] {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: lightgrey;
+			border-radius: 50px;
+		}
+		#one:checked~#slider>.pins>label[for=one] {
+            display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			border-radius: 50px;
+        }
+
+		#two:checked~#slider>.slide:nth-child(2) {
+			display: block;
+		}
+
+		#two~#slider>.pins>label[for=two] {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: lightgrey;
+			border-radius: 50px;
+		}
+		#two:checked~#slider>.pins>label[for=two] {
+            display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			border-radius: 50px;
+        }
+
+		#three:checked~#slider>.slide:nth-child(3) {
+			display: block;
+		}
+
+		#three~#slider>.pins>label[for=three] {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: lightgrey;
+			border-radius: 50px;
+		}
+		#three:checked~#slider>.pins>label[for=three] {
+            display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			border-radius: 50px;
+        }
+
+		#four:checked~#slider>.slide:nth-child(4) {
+			display: block;
+		}
+
+		#four~#slider>.pins>label[for=four] {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: lightgrey;
+			border-radius: 50px;
+		}
+		#four:checked~#slider>.pins>label[for=four] {
+            display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			border-radius: 50px;
+        }
+
+		#five:checked~#slider>.slide:nth-child(5) {
+			display: block;
+		}
+
+		#five~#slider>.pins>label[for=five] {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: lightgrey;
+			border-radius: 50px;
+		}
+		#five:checked~#slider>.pins>label[for=five] {
+            display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			border-radius: 50px;
+        }
+	</style>
+</head>
+
+<body>
+	<h1>добавить стили и расставить for и src так, чтобы работала фотогаллерея</h1>
+	<input type="radio" id="one" name="image-swither" checked>
+	<input type="radio" id="two"name="image-swither">
+	<input type="radio" id="three"name="image-swither">
+	<input type="radio" id="four"name="image-swither">
+	<input type="radio" id="five"name="image-swither">
+	<div id="slider">
+		<section class="slide">
+			<img src="im1.jpg">
+			<label for="five" class="prevSlide"></label>
+			<label for="two" class="nextSlide"></label>
+		</section>
+		<section class="slide">
+			<img src="im2.png">
+			<label for="one" class="prevSlide"></label>
+			<label for="three" class="nextSlide"></label>
+		</section>
+		<section class="slide">
+			<img src="im3.jpg">
+			<label for="two" class="prevSlide"></label>
+			<label for="four" class="nextSlide"></label>
+		</section>
+		<section class="slide">
+			<img src="im4.png">
+			<label for="three" class="prevSlide"></label>
+			<label for="five" class="nextSlide"></label>
+		</section>
+		<section class="slide">
+			<img src="im5.jpg">
+			<label for="four" class="prevSlide"></label>
+			<label for="one" class="nextSlide"></label>
+		</section>
+		<div class="pins">
+			<label for="one"></label>
+			<label for="two"></label>
+			<label for="three"></label>
+			<label for="four"></label>
+			<label for="five"></label>
+		</div>
+	</div>
+</body>
+
+</html>
