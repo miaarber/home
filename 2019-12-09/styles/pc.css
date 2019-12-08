@@ -1,0 +1,166 @@
+        /* Обнуляем отступы по умолчанию */
+        body,
+        ul {
+            margin: 0;
+        }
+
+        header {
+            background-color: coral;
+            /* Потому что внутри будет позиционироваться лого и меню */
+            position: relative;
+
+            min-height: 120px;
+            min-width: 480px;
+        }
+        /* Лого */
+        header>div {
+            background-color: lightsalmon;
+
+            height: 80px;
+            width: 200px;
+
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* 
+        ------------------------------------------------------------
+        ---------------------- МЕНЮ В HEADER -----------------------
+        ------------------------------------------------------------ */
+        /* Пункты меню */
+        header>ul>li {
+            /* Выстраиваем горизонтально */
+            display: inline-block;
+
+            position: relative;
+        }
+        header>ul {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        /* Выпадающее меню */
+        header>ul>li>ul {
+            /* Прячем выпадающее меню */
+            display: none;
+
+            position: absolute;
+            right: 10px;
+            top: 30px;
+
+            background-color: green;
+            list-style: none;
+        }
+        /* Чтобы выпадающее меню появлялось по наведению мыши */
+        header>ul>:hover:nth-child(3)>ul {
+            display: block;
+        }
+
+        /* Способ выстроить эл-ты выпадающего списка в одну строку,
+        т.к.начальная ширина считается по родительскому эл-ту - Вакансии */
+        header>ul>li>ul>li {
+            min-width: 150px;
+            margin-left: -40px;
+        }
+
+        /* Добавим треугольник */
+        header>ul>li:last-child::after {
+            /* Т.к.эл-т, после которого идет треугольник, строчный */
+            display: inline;
+            /* Готовый треугольник из табл.символов Юникода. Другие: 
+            1) http://yoksel.github.io/unicode-table/
+            2) https://unicode-table.com/ru/ */
+            content: "\25bc";
+        }
+
+        /* 
+        ------------------------------------------------------------
+        -------------------------- FOOTER  -------------------------
+        ------------------------------------------------------------ */
+        footer {
+            /* Выравниваем текст в footer по высоте и ширине */
+            min-height: 120px;
+            line-height: 120px;
+            text-align: center;
+            /* Чтобы footer подстраивался под ширину браузера */
+            min-width: 480px;
+
+            background-color: lightblue;
+        }
+
+        main {
+            min-height: 400px;
+            border-left: 250px solid hotpink;
+
+        /* 480px общей ширины - 250px border = 230 px */
+            min-width: 230px;
+
+        }
+
+        aside {
+            position: absolute;
+
+            min-width: 250px;
+        }
+
+        /* Придаем пунктам бокового меню вид ссылок */
+        aside label,
+        aside li {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        /* Чтобы срабатывал клик между label и треугольником */
+        aside label
+        /* лучше прописать селектор как aside>ul>label */
+        {
+            display: block;
+        }
+
+        aside>ul {
+            /* Убираем маркеры у списков */
+            list-style: none;
+            /* Лучше использовать отрицательный margin, 
+            т.к.свойство padding-inline-start нестандартное */
+            padding-inline-start: 0;
+        }
+        aside input {
+            display: none;
+        }
+
+        /* Прописываем невидимость/видимость выпадающих списков 
+        для input в состоянии unchecked/checked*/
+        #horns~ul,
+        #hoofs~ul,
+        #leather~ul {
+            display: none;
+
+            min-width: 200px;
+            background-color: grey;
+            position: absolute;
+            left: 250px;
+            top: 0;
+        }
+        #horns:checked~ul,
+        #hoofs:checked~ul,
+        #leather:checked~ul {
+            display: block;
+        }
+
+        /* Добавим треугольники в боковое меню */
+        aside>ul>li>label::after {
+            content: "\25b6";
+            display: inline;
+            color: black;
+            /* margin и text-align не подходят, используем позиционирование,
+            чтобы выровнять треугольники по правому краю */
+            position: absolute;
+            right: 0;
+
+        }
+
+        aside>ul>li {
+            position: relative;
+        }
