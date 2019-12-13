@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мячик, бесконечно отскакивающий от границ окна</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40px 40px, red, black);
+            /* Если градиент не отобразился */
+            background-color: red;
+
+            /* Анимация */
+            animation-name: bounce, moveLeft, spin;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: both;
+
+            /* Символ &#9789 "☽" из табл.символов Юникода.
+            Другие: http://yoksel.github.io/unicode-table/ */
+            font-size: 25px;
+            font-weight: bold;
+            line-height: 100px;
+            text-align: center;
+        }
+        @keyframes bounce {
+            from {
+                bottom: calc(100vh - 100px);
+            }
+            40% {
+                bottom: 0;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle at 30px 30px, red, black);
+                /* Если градиент не отобразился */
+                background-color: red;
+            }
+            45% {
+                bottom: 0;
+                width: 110px;
+                height: 50px;
+                background: radial-gradient(circle at 30px 30px, orange, black);
+                /* Если градиент не отобразился */
+                background-color: orange;
+            }
+            50% {
+                bottom: 0;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle at 30px 30px, yellow, black);
+                /* Если градиент не отобразился */
+                background-color: yellow;
+            }
+            60% {
+                background: radial-gradient(circle at 30px 30px, green, black);
+                /* Если градиент не отобразился */
+                background-color: green;
+            }
+            to {
+                bottom: calc(100vh - 100px);
+                background: radial-gradient(circle at 30px 30px, skyblue, black); 
+                /* Если градиент не отобразился */
+                background-color: skyblue; 
+            }
+        }
+        @keyframes moveLeft {
+            from {
+                left: 0;
+            }
+            to {
+                left: calc(100vw - 100px);
+            }
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>&#9789</div>
+</body>
+</html>
