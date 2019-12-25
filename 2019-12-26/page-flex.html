@@ -1,0 +1,336 @@
+<!-- --------------- Задание -->
+<!-- Сверстать макет с помощью flexbox:
+1) Ширина < 640
+Блоки в столбик, блоки 2, 10, 11, 12 - прячем, 
+реклама(бл.7 закрывается), меню выпадающее и fixed
+2) Ширина от 640 до 1024
+Как на макете
+3) Ширина от 1024 до 1200
+Блоки 4 и 7 становятся горизонтально
+4) Ширина > 1200
+Максимальная ширина 1200px и центрирование по горизонтали 
+
+Можно добавлять классы,  id, текст, элементы для создания выпадающего меню (input, label)
+Структуру html менять запрещено -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Макет на flexbox</title> 
+	<style>
+		.wrapper {
+			margin: 10px 20px;
+		}
+		div {
+			padding: 10px;
+		}
+		ul>li {
+			list-style: none;
+			padding: 10px;
+		}
+
+		@media screen and (max-width: 640px) {
+			div {
+				width: 70vw;
+				min-height: 50px;
+				background-color: grey;
+			}
+			header>div,
+			aside>div,
+			aside>div,
+			article>div,
+			article>ul>li,
+			footer>div {
+				display: flex;
+				flex-direction: column;
+			}
+			article>div,
+			article>ul>li {
+				background-color: lightgrey;
+			}
+		}
+
+		@media screen and (min-width: 641px) and (max-width: 1024px) {
+			/* --------------- Шапка */
+			header {
+				display: flex;
+			}
+			header>div:nth-child(1) {
+				flex-grow: 1;
+				min-height: 10px;
+
+				background-color: grey;
+
+				margin-right: 10px;
+			}
+			header>div:nth-child(2) {
+				flex-grow: 2;
+				min-height: 40px;
+
+				background-color: grey;
+				margin-right: 10px;
+			}
+			header>div:nth-child(3) {
+				flex-grow: 2;
+				min-height: 20px;
+
+				background-color: grey;
+			}
+			main {
+				display: flex;
+			}
+			aside {
+				display: flex;
+				flex-direction: column;
+
+				min-height: 500px;
+				flex-grow: 1;
+				width: 15vw
+			}
+			aside>div:nth-child(1) {
+				flex-grow: 3;
+
+				background-color: grey;
+				margin-bottom: 200px;
+			}
+			aside>div:nth-child(2) {
+				flex-grow: 2;
+
+				background-color: grey;
+			}
+			article {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 3;
+				
+
+				min-height: 500px;
+				margin-left: 10px;
+				width: 50vw
+			}
+			article>div:nth-child(1) {
+				background-color: lightgrey;
+				min-height: 100px;
+			}
+			article>ul {
+				list-style: none;
+				padding: 10px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				background-color: lightgrey;
+			}
+			article>ul>li {
+				flex-grow: 1;
+				margin-right: 5px;
+				min-height: 50px;
+			}
+
+			article>div {
+				display: flex;
+				flex-wrap: nowrap;
+				background-color: lightgrey;
+			}
+
+			article+hr {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+
+			footer {
+				display: flex;
+			}
+			footer>div {
+				background-color: grey;
+				
+			}
+			footer>div:nth-child(1),
+			footer>div:nth-child(2) {
+				margin-right: 10px;
+			}
+			footer>div:nth-child(1) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(2) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(3),
+			footer>div:nth-child(4) {
+				flex-direction: column;
+			}
+			footer>div:nth-child(3) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(4) {
+				flex-grow: 1;
+			}
+		}
+
+		@media screen and (min-width: 1025px) and (max-width: 1200px) {
+			/* --------------- Шапка */
+			header {
+				display: flex;
+			}
+			header>div:nth-child(1) {
+				flex-grow: 1;
+				min-height: 10px;
+
+				background-color: grey;
+
+				margin-right: 10px;
+			}
+			header>div:nth-child(2) {
+				flex-grow: 2;
+				min-height: 40px;
+
+				background-color: grey;
+				margin-right: 10px;
+			}
+			header>div:nth-child(3) {
+				flex-grow: 2;
+				min-height: 20px;
+
+				background-color: grey;
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+			}
+			aside {
+				display: flex;
+				min-height: 100px;
+				flex-direction: row;
+				margin-bottom: 10px;
+			}
+			aside>div:nth-child(1) {
+
+				flex-grow: 3;
+				margin-right: 500px;
+				background-color: grey;
+			}
+			aside>div:nth-child(2) {
+				flex-grow: 1;
+
+				background-color: grey;
+			}
+			article {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 3;
+				
+
+			}
+		
+			article>div:nth-child(1) {
+				background-color: lightgrey;
+				min-height: 100px;
+			}
+			article>ul {
+				list-style: none;
+				padding: 10px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				background-color: lightgrey;
+			}
+			article>ul>li {
+				flex-grow: 1;
+				margin-right: 5px;
+				min-height: 50px;
+			}
+
+			article>div {
+				display: flex;
+				flex-wrap: nowrap;
+				background-color: lightgrey;
+			}
+
+			article+hr {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+
+			footer {
+				display: flex;
+			}
+			footer>div {
+				background-color: grey;
+				
+			}
+			footer>div:nth-child(1),
+			footer>div:nth-child(2) {
+				margin-right: 10px;
+			}
+			footer>div:nth-child(1) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(2) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(3),
+			footer>div:nth-child(4) {
+				flex-direction: column;
+			}
+			footer>div:nth-child(3) {
+				flex-grow: 1;
+			}
+			footer>div:nth-child(4) {
+				flex-grow: 1;
+			}
+
+		}
+
+		@media screen and (min-width: 1201px) {
+			.wrapper {
+				max-width: 1200px;
+			}
+		}
+
+
+
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</header>
+		<hr>
+		<main>
+			<aside>
+				<div>4</div>
+				<div>7</div>
+			</aside>
+			<article>
+				<div>5</div>
+				<ul>
+					<li>6</li>
+					<li>6</li>
+					<li>6</li>
+					<li>6</li>
+					<li>6</li>
+					<li>6</li>
+					<li>6</li>
+				</ul>
+				<div>8</div>
+				<div>9</div>
+			</article>
+			<hr>
+		</main>
+		<footer>
+			<div>10</div>
+			<div>11</div>
+			<div>12</div>
+			<div>13</div>
+		</footer>
+	</div>
+</body>
+
+</html>

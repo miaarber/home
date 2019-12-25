@@ -1,0 +1,269 @@
+<!-- --------------- Задание -->
+<!-- Сверстать макет с помощью таблиц.
+Выпадающие меню можно оставить в помощью списков, но основные меню должны быть сделаны с помощью таблиц  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Верстка макета с помощью таблиц [ООО "Рога и копыта" - заготовка кожи и всего остального]</title>
+    <style>
+        body,
+        ul {
+            margin: 0;
+        }
+
+        #logo {
+            background-color: orange;
+
+            padding: 5px 25px 30px;
+        }
+
+        .header-pink {
+            background-color: pink;
+        }
+
+        #vacancies {
+            display: none;
+
+            position: absolute;
+            right: 2px;
+            top: 115px;
+
+            background-color: green;
+            list-style: none;
+        }
+        td#vacancies-data:hover>ul {
+            display: block;
+        }
+        #vacancies>li {
+            min-width: 135px;
+            margin-left: -40px;
+            padding-left: 5px;
+        }
+        td#vacancies-data::after {
+            /* Т.к.эл-т, после которого идет треугольник, строчный */
+            display: inline;
+            /* Готовый треугольник из табл.символов Юникода. Другие: 
+            1) http://yoksel.github.io/unicode-table/
+            2) https://unicode-table.com/ru/ */
+            content: "\25bc";
+        }
+
+        .horns,
+        .hoofs,
+        .leather {
+            display: none;
+        }
+        label {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #aside>ul {
+            /* Убираем маркеры у списков */
+            list-style: none;
+            /* Лучше использовать отрицательный margin, 
+            т.к.свойство padding-inline-start нестандартное */
+            padding-inline-start: 0;
+        }
+        #aside input {
+            display: none;
+        }
+
+        /* Прописываем невидимость/видимость выпадающих списков 
+        для input в состоянии unchecked/checked*/
+        #horns~ul,
+        #hoofs~ul,
+        #leather~ul {
+            display: none;
+
+            min-width: 200px;
+            background-color: grey;
+            position: absolute;
+            left: 250px;
+            top: 115px;
+
+            list-style: none;
+        }
+        #horns:checked~ul,
+        #hoofs:checked~ul,
+        #leather:checked~ul {
+            display: block;
+        }
+            
+            /* Добавим треугольники в боковое меню */
+        label::after {
+            content: "\25b6";
+            display: inline;
+            color: black;
+            /* margin и text-align не подходят, используем позиционирование,
+            чтобы выровнять треугольники по правому краю */
+            position: absolute;
+            left: 240px;   
+        }
+
+        #aside {
+            min-width: 250px;
+        }
+
+        #main {
+            /* 480px общей ширины - 250px border = 230 px */
+            min-width: 230px;
+        }
+
+
+        #footer {
+            /* Выравниваем текст в footer по высоте и ширине */
+            min-height: 120px;
+            line-height: 120px;
+            text-align: center;
+            /* Чтобы footer подстраивался под ширину браузера */
+            min-width: 480px;
+
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <!-- Шапка: начало -->
+            <tr>
+                <tr>
+                    <td class="header-pink" colspan="5" width="100%" height="5px">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="header-pink">
+                        <table border="0" cellspacing="0" width="100%" height="60px">
+                            <tr>
+                                <td width="5%">
+                                </td>
+                                <td id="logo" width="95%">
+                                    logo
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    
+                    <td class="header-pink" colspan="6">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="header-pink" colspan="2">
+                    </td>
+                    
+                    <td class="header-pink">
+                        О компании
+                    </td>
+                    <td class="header-pink">
+                        Доставка
+                    </td>
+                    <td class="header-pink" id="vacancies-data">
+                        Вакансии
+                        <ul id="vacancies">
+                            <li>
+                                Заготовщик кожи
+                            </li>
+                            <li>
+                                Заготовщик рогов
+                            </li>
+                            <li>
+                                Заготовщик копыт
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tr>
+            <!-- Шапка: конец -->
+
+            <tr>
+
+            <!-- Боковое меню: начало -->
+            <td id="aside" width="20%">
+                <table>
+                    <tr>
+                        <td>
+                            Каталог
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id="horns">
+                            <label for="horns">
+                                Рога
+                            </label>
+                            <ul class="horns">
+                                <li>
+                                    Бараньи
+                                </li>
+                                <li>
+                                    Оленьи
+                                </li>
+                            </ul>
+                        </td>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id="hoofs">
+                            <label for="hoofs">
+                                Копыта
+                            </label>
+                            <ul class="hoofs">
+                                <li>
+                                    Бараньи
+                                </li>
+                                <li>
+                                    Оленьи
+                                </li>
+                                <li>
+                                    Свиные
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id="leather">
+                            <label for="leather">
+                                Кожа
+                            </label>
+                            <ul class="leather">
+                                <li>
+                                    Крокодила
+                                </li>
+                                <li>
+                                    Чебурашки
+                                </li>
+                                <li>
+                                    Старухи шапокляк
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <!-- Боковое меню: конец -->
+
+            <!-- Основная часть: начало -->
+            <td id="main"  colspan="4">
+            </td>
+            <!-- Основная часть: начало -->
+
+            </tr>
+
+            <!-- Подвал: начало -->
+            <tr>
+                <td id="footer" colspan=5 width="100%">
+                    &copy; 2019
+                </td>
+            </tr>
+            <!-- Подвал: конец -->
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,2 +1,0 @@
-Стилизация таблиц. Responsive таблицы
-https://html5-noveo-software-university.github.io/tables.html

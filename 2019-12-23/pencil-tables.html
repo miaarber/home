@@ -1,0 +1,58 @@
+<!-- --------------- Задание -->
+<!-- Сверстать "резиновый" карандаш с использованием таблиц -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Резиновый карандаш с использованием таблиц</title>
+    <style>
+        #rod {
+            width: 60vw;
+            height: 5vw;
+
+            background: linear-gradient(to bottom,
+			#ff0, #ff0 35%,
+			#cdcd00 35%, #cdcd00 65%,
+			#ff0 65%, #ff0);
+        }
+        #point {
+            width: 0px;
+			height: 0px;
+
+			border-style: solid; 
+			border-width: 32px 10px 32px 50px;
+			border-color: transparent transparent transparent #a62525;
+			border-radius: 100px;
+        }
+        #lead {
+            width: 0px;
+			height: 0px;
+
+			border-style: solid; 
+			border-width: 64px 20px 64px 100px;
+			border-color: transparent transparent transparent #000;
+			border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td id="rod"></td>
+                <td id="point">
+                    <table>
+                        <tbody>
+                            <td id="lead"></td>
+                        </tbody>
+                    </table>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!-- --------------- Задание -->
+<!-- Разрезать изображение рамки и сверстать резиновый фон.
+Текст можно использовать любой, но без жестких переносов строк, чтобы мог растягиваться на произвольную ширину.
+Размеры рамки должны зависеть от количества текста в ней и от размеров окна браузера (т.е. рамка по ширине - 
+на всю ширину окна браузера и имеет такую высоту, чтобы вместить содержащийся в ней текст) -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Резиновый фон с использованием разрезанного изображения</title>
+    <style>
+        #text {
+            padding: 60px;
+
+            font-size: 30px;
+            text-align: center;
+        }
+
+        /* --------------- Рамка */
+        /* Вертикальные линии */
+        #frame-snippet-vertical-left {
+            background: url(images/frame-snippet-vertical.png) repeat-y;
+        }
+        #frame-snippet-vertical-right {
+            background: url(images/frame-snippet-vertical.png) repeat-y right;
+        }
+        /* Горизонтальные линии */
+        #frame-snippet-horizontal-top {
+            background: url(images/frame-snippet-horizontal.png) repeat-x top;
+        }
+        #frame-snippet-horizontal-bottom {
+            background: url(images/frame-snippet-horizontal.png) repeat-x bottom;
+        }
+        /* Левые углы */
+        #frame-snippet-top-left {
+            background: url(images/frame-snippet-top-left.png) no-repeat top left;
+        }
+        #frame-snippet-bottom-left {
+            background: url(images/frame-snippet-bottom-left.png) no-repeat bottom left;
+        }
+        /* Правые углы */
+        #frame-snippet-top-right {
+            background: url(images/frame-snippet-top-right.png) no-repeat top right;
+        }
+        #frame-snippet-bottom-right {
+            background: url(images/frame-snippet-bottom-right.png) no-repeat bottom right;
+        }
+    </style>
+</head>
+<body>
+    <!-- Вертикальные линии -->
+    <div id="frame-snippet-vertical-left">
+        <div id="frame-snippet-vertical-right">
+            <!-- Горизонтальные линии -->
+            <div id="frame-snippet-horizontal-top">
+                <div id="frame-snippet-horizontal-bottom">
+                    <!-- Левые углы -->
+                    <div id="frame-snippet-top-left">
+                        <div id="frame-snippet-bottom-left">
+                            <!-- Правые углы -->
+                            <div id="frame-snippet-top-right">
+                                <div id="frame-snippet-bottom-right">
+
+                                    <div id="text">
+                                        Бериллий - элемент главной подгруппы второй группы, 
+                                        второго периода периодической системы химических элементов Д. И. Менделеева, 
+                                        с атомным номером 4. Обозначается символом Be (лат. Beryllium). 
+                                        Высокотоксичный элемент. 
+                                        Простое вещество бериллий - относительно твердый металл светло-серого цвета.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
