@@ -79,6 +79,9 @@
 			}
 
             /* ---------- -----  Выпадающее меню */
+            aside>label {
+                cursor: pointer;
+            }
             /* Блок 4 */
             aside>div:nth-child(3),
             /* Блок 7 */
@@ -87,7 +90,7 @@
             }
             aside>input:checked+label+div {
                 display: block;
-                width: 70vw;
+                width: 100vw;
                 min-height: 200px;
                 background-color: lightgreen;
                 /* Чтобы раскрытое меню перекрывало другие блоки */
@@ -114,6 +117,8 @@
             }
             main {
                 display: flex;
+                /* flex-direction: row; */
+                flex-wrap: wrap;
                 
                 margin-bottom: 10px;
             }
@@ -122,9 +127,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                width: 180px;
                 
-                margin-right: 10px;
-                
+                margin-right: 10px;    
             }
             aside>input,
             aside>input+label {
@@ -135,24 +140,26 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
+
+                width: calc(100% - 190px);
             }
             article>ul {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 align-items: flex-start;
-                justify-content: space-between;
-                align-content: space-between;
-                
+                /* justify-content: space-between; */
                 
                 padding: 0;
             }
             article>ul>li {
                 display: flex;
-                justify-content: space-between;
+                
                 list-style: none;
                 width: 70px;
                 height: 70px;
+
+                margin: 10px 10px 0 0;
             }
     
             footer {
@@ -162,6 +169,7 @@
                 justify-content: space-between;
                 position: relative;
             }
+
           
 
             /* --------------- Блоки */
@@ -199,6 +207,7 @@
             article>:first-child {
 
                 flex-basis: 100%;
+                /* flex-basis: 750px; */
                 height: 210px;
             }
             /* Блок 6 */
@@ -247,6 +256,10 @@
                 right: 0;
                 bottom: 0;
             }
+            main>hr {
+                width: 100%;
+            }
+        
         }
 
         /* 3) Ширина от 1024 до 1200
@@ -259,9 +272,8 @@
             }
             main {
                 display: flex;
+                flex-direction: row;
                 flex-direction: column;
-                
-                margin-bottom: 10px;
             }
             /* --------------- Сайдбар */
             aside {
@@ -280,29 +292,26 @@
             article {
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                
                 flex-grow: 1;
-                min-height: 650px;
+                width: 100%;
+                height: 650px;
             }
             article>ul {
                 display: flex;
-                /* flex-direction: row; */
-                
-                /* align-items: flex-start; */
-                justify-content: space-between;
-                /* align-content: space-between; */
-                
+                flex-wrap: wrap;
                 padding: 0;
             }
             article>ul>li {
-                /* display: flex; */
-                /* justify-content: space-between; */
-                
                 list-style: none;
                 width: 70px;
                 height: 70px;
 
+                margin-top: 10px;
                 margin-right: 10px;
+            }
+            main>hr {
+                width: 100%;
             }
     
             footer {
@@ -379,17 +388,16 @@
             
             /* Блок 10 */
             /* Блок 11 */
-            footer>div,
+            footer>:first-child,
             footer>div+div {
                 width: calc(33% - 10px);
                 height: 180px;
-                margin-right: 10px;
             }
             /* Блок 12 */
             /* Блок 13 */
             footer>div+div+div,
             footer>div+div+div+div {
-                width: calc(33% - 10px);
+                width: 33%;
                 height: 75px;
                 
             }
@@ -411,7 +419,8 @@
             }
             main {
                 display: flex;
-                
+                flex-direction: row;
+                flex-wrap: wrap;
                 margin-bottom: 10px;
             }
             /* --------------- Сайдбар */
@@ -431,18 +440,20 @@
             /* --------------- Основной контент */
             article {
                 display: flex;
+                flex-direction: row;
                 flex-wrap: wrap;
-                justify-content: space-between;
-                flex-grow: 1;
+                align-items: stretch;
+                width: calc(100% - 190px);
                 min-height: 650px;
+                align-content: space-between;
             }
             article>ul {
                 display: flex;
+                flex-wrap: wrap;
                 /* flex-direction: row; */
                 
                 /* align-items: flex-start; */
-                justify-content: space-between;
-                /* align-content: space-between; */
+                /* justify-content: space-between; */
                 
                 padding: 0;
             }
@@ -454,7 +465,11 @@
                 width: 70px;
                 height: 70px;
 
+                margin-top: 10px;
                 margin-right: 10px;
+            }
+            main>hr {
+                width: 100%;
             }
     
             footer {
@@ -499,7 +514,6 @@
             }
             /* Блок 5 */
             article>:first-child {
-
                 width: 100%;
                 height: 210px;
             }
@@ -519,7 +533,7 @@
             article>ul+div+div {
                 display: flex;
                 flex-direction: row;
-                flex-grow: 1;
+                /* flex-grow: 1; */
                 
                 height: 200px;
                 width: calc(50% - 10px);
