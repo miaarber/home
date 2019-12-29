@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Верстка макета по методике БЭМ</title>
+	<!-- --------------- Задание -->
+    <!-- Сверстать макет по методике БЭМ:
+    1) Ширина < 640
+    Блоки в столбик, блоки 2, 10, 11, 12 - прячем, 
+    реклама(бл.7) закрывается, меню выпадающее и fixed
+    2) Ширина от 640 до 1024
+    Как на макете
+    3) Ширина от 1024 до 1200
+    Блоки 4 и 7 становятся горизонтально
+    4) Ширина > 1200
+    Максимальная ширина 1200px и центрирование по горизонтали 
+
+    Можно добавлять классы,  id, текст, элементы для создания выпадающего меню (input, label)
+    Структуру html менять запрещено 
+
+    Размеры блоков (ширина х высота):
+    1: 120х110
+    2: 250х110
+    3: 510х110
+    4: 180х330
+    5: 750х210
+    6: 130х150
+    7: 180х130
+    8: 350х200
+    9: 350х200
+    10: 300х180
+    11: 300х180
+    12: 300х75
+    13: 300х75
+	-->
+	<style>
+        /* Фоновый цвет для блоков */
+        .block__color_darkgrey {
+            background-color: #888888;
+        }
+        .block__color_lightgrey {
+            background-color: #dddddd;
+        }
+        .wrapper {
+            margin: 10px auto;
+            max-width: 1200px;
+        }
+        .body {
+            margin: 0;
+        }
+
+		/* mobile-first */
+		/* <640 - блоки в столбик, блоки 2, 10, 11, 12 - прячем, реклама(бл.7 закрывается), меню выпадающее и fixed */
+		@media screen and (max-width: 639px) {
+
+
+			/* Прячем блоки 2, 10, 11, 12; блоки 4 и 7 и чекбокс у меню */
+			.block__visibility_none {
+				display: none;
+			}
+
+			.block {
+                margin-bottom: 10px;
+			}
+
+            /* ---------- -----  Выпадающее меню */
+            .sidebar__menu__label {
+                cursor: pointer;
+            }
+            
+            .sidebar__menu__checkbox:checked~.sidebar__menu {
+                display: block;
+                width: 100vw;
+                min-height: 200px;
+                background-color: lightgreen;
+                /* Чтобы раскрытое меню перекрывало другие блоки */
+                position: fixed;
+            }
+            
+            .article__list-item {
+				list-style: none;
+				margin-left: -40px;
+				margin-bottom: 10px;
+            }
+		}
+
+        /* 640...1024 - как на макете */
+        @media screen and (min-width: 640px) and (max-width: 1023px) {
+            .block__display_flex {
+                display: flex;
+            }
+			.header__block {
+				justify-content: space-between;
+			}
+            .main {
+                flex-wrap: wrap;
+            }
+            /* --------------- Сайдбар */
+            .sidebar {
+                flex-direction: column;
+                justify-content: space-between;
+                width: 180px;
+                
+                margin-right: 10px;    
+            }
+			.sidebar__menu__label,
+            .sidebar__menu__checkbox {
+                display: none;
+            }
+            /* --------------- Основной контент */
+            .article {
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                width: calc(100% - 190px);
+            }
+            .article__list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                
+                padding: 0;
+            }
+            .article__list-item {
+                list-style: none;
+                width: 130px;
+                height: 150px;
+
+                margin: 10px 10px 0 0;
+            }
+    
+            .footer {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                position: relative;
+            }
+
+          
+
+            /* --------------- Блоки */
+            /* Блок 1 */
+            .header__logo {
+                width: 120px;
+                height: 110px;
+
+                flex-grow: 1;
+                margin-right: 10px;
+            }
+            /* Блок 2 */
+            .header__block-2 {
+                width: 250px;
+                height: 110px;
+
+                flex-grow: 2;
+                margin-right: 10px;
+            }
+            /* Блок 3 */
+            .header__contacts {
+                width: 510px;
+                height: 110px;
+
+                flex-grow: 2;
+            }
+            /* Блок 4 */
+            .sidebar__menu__checkbox,
+            .sidebar__menu__label,
+            .sidebar__menu {
+                width: 180px;
+                height: 330px;
+            }
+            /* Блок 5 */
+            .article__text {
+                flex-basis: 100%;
+                height: 210px;
+            }
+            
+            /* Блок 7 */
+            .sidebar__adds {
+                width: 180px;
+                height: 130px;
+            }
+            /* Блок 8 */
+            /* Блок 9 */
+            .article__block {
+                display: flex;
+                flex-grow: 1;
+                
+                height: 200px;
+            }
+            /* Блок 8 */
+            .article__block-8 {
+                margin-right: 10px;
+            }
+            
+            /* Блок 10 */
+            /* Блок 11 */
+            .footer__block_big {
+                width: calc(33% - 10px);
+                height: 180px;
+                margin-right: 10px;
+            }
+            /* Блок 12 */
+            /* Блок 13 */
+            .footer__block_small {
+                width: calc(33% - 10px);
+                height: 75px;
+                
+            }
+            /* Блок 13 */
+            .footer__block-13 {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            .line-separator {
+                width: 100%;
+            }
+        
+        }
+
+        /* 3) Ширина от 1024 до 1200
+        Блоки 4 и 7 становятся горизонтально */
+        @media screen and (min-width: 1024px) and (max-width: 1200px) {
+            .block__display_flex {
+                display: flex;
+            }
+			.header__block {
+				justify-content: space-between;
+			}
+            .main {
+                flex-direction: row;
+                flex-direction: column;
+            }
+            /* --------------- Сайдбар */
+            .sidebar {
+                justify-content: space-between;
+                flex-grow: 1;
+                
+                margin-bottom: 10px;
+                
+            }
+            .sidebar__menu__label,
+            .sidebar__menu__checkbox {
+                display: none;
+            }
+            /* --------------- Основной контент */
+            .article {
+                flex-wrap: wrap;
+                
+                flex-grow: 1;
+                width: 100%;
+                height: 650px;
+            }
+            .article__list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                padding: 0;
+            }
+            .article__list-item {
+                list-style: none;
+                width: 130px;
+                height: 150px;
+
+                margin: 10px 10px 0 0;
+            }
+            .line-separator {
+                width: 100%;
+            }
+    
+            .footer {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                position: relative;
+            }
+          
+
+            /* --------------- Блоки */
+            /* Блок 1 */
+            .header__logo {
+                width: 120px;
+                height: 110px;
+
+                flex-grow: 1;
+                margin-right: 10px;
+            }
+            /* Блок 2 */
+            .header__block-2 {
+                width: 250px;
+                height: 110px;
+
+                flex-grow: 2;
+                margin-right: 10px;
+            }
+            /* Блок 3 */
+            .header__contacts {
+                width: 510px;
+                height: 110px;
+
+                flex-grow: 2;
+            }
+            /* Блок 4 */
+            .sidebar__menu__checkbox,
+            .sidebar__menu__label,
+            .sidebar__menu {
+                width: 600px;
+                height: 130px;
+            }
+            /* Блок 5 */
+            .article__text {
+
+                width: 100%;
+                height: 210px;
+            }
+            /* Блок 7 */
+            .sidebar__adds {
+                width: 180px;
+                height: 130px;
+            }
+            /* Блок 8 */
+            /* Блок 9 */
+            .article__block {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                
+                height: 200px;
+                width: calc(50% - 10px);
+            }
+            /* Блок 8 */
+            .article__block-8 {
+                margin-right: 10px;
+            }
+            
+            /* Блок 10 */
+            /* Блок 11 */
+            .footer__block_big {
+                width: calc(33% - 10px);
+                height: 180px;
+            }
+            /* Блок 12 */
+            /* Блок 13 */
+            .footer__block_small {
+                width: 33%;
+                height: 75px;
+                
+            }
+            /* Блок 13 */
+            .footer__block-13 {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        /* 4) Ширина > 1200
+        Максимальная ширина 1200px и центрирование по горизонтали  */
+        @media screen and (min-width: 1201px) {
+            .block__display_flex {
+                display: flex;
+            }
+			.header__block {
+				justify-content: space-between;
+			}
+            .main {
+                flex-wrap: wrap;
+            }
+            /* --------------- Сайдбар */
+            .sidebar {
+                flex-direction: column;
+                justify-content: space-between;
+                width: 180px;
+                
+                margin-right: 10px;    
+            }
+			.sidebar__menu__label,
+            .sidebar__menu__checkbox {
+                display: none;
+            }
+            /* --------------- Основной контент */
+            .article {
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                width: calc(100% - 190px);
+            }
+            .article__list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                
+                padding: 0;
+            }
+            .article__list-item {
+                list-style: none;
+                width: 130px;
+                height: 150px;
+
+                margin: 10px 10px 0 0;
+            }
+    
+            .footer {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                position: relative;
+            }
+
+          
+
+            /* --------------- Блоки */
+            /* Блок 1 */
+            .header__logo {
+                width: 120px;
+                height: 110px;
+
+                flex-grow: 1;
+                margin-right: 10px;
+            }
+            /* Блок 2 */
+            .header__block-2 {
+                width: 250px;
+                height: 110px;
+
+                flex-grow: 2;
+                margin-right: 10px;
+            }
+            /* Блок 3 */
+            .header__contacts {
+                width: 510px;
+                height: 110px;
+
+                flex-grow: 2;
+            }
+            /* Блок 4 */
+            .sidebar__menu__checkbox,
+            .sidebar__menu__label,
+            .sidebar__menu {
+                width: 180px;
+                height: 330px;
+            }
+            /* Блок 5 */
+            .article__text {
+                flex-basis: 100%;
+                height: 210px;
+            }
+            
+            /* Блок 7 */
+            .sidebar__adds {
+                width: 180px;
+                height: 130px;
+            }
+            /* Блок 8 */
+            /* Блок 9 */
+            .article__block {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                
+                height: 200px;
+                width: calc(50% - 10px);
+            }
+            /* Блок 8 */
+            .article__block-8 {
+                margin-right: 10px;
+            }
+            
+            /* Блок 10 */
+            /* Блок 11 */
+            .footer__block_big {
+                width: calc(33% - 10px);
+                height: 180px;
+            }
+            /* Блок 12 */
+            /* Блок 13 */
+            .footer__block_small {
+                width: 33%;
+                height: 75px;
+                
+            }
+            /* Блок 13 */
+            .footer__block-13 {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            .line-separator {
+                width: 100%;
+            }
+
+        }
+	</style>
+</head>
+
+<body class="body">
+	<div class="block wrapper">
+		<header class="block__display_flex header">
+			<div class="block block__color_darkgrey header__logo header__block">1 Логотип</div>
+			<div class="block block__visibility_none block__color_darkgrey header__block-2 header__block">2</div>
+			<div class="block block__color_darkgrey header__contacts header__block">3 Контакты</div>
+		</header>
+		<hr class="line-separator">
+		<main class="main block block__display_flex">
+			<aside class="sidebar block__display_flex">
+                <!-- Меню -->
+                <input type="checkbox" id="drop-down-menu" class="block__visibility_none sidebar__menu__checkbox">
+                <label for="drop-down-menu" class="sidebar__menu__label">Меню</label>
+				<div class="block block__visibility_none block__color_darkgrey sidebar__menu">4</div>
+				<div class="block block__visibility_none block__color_darkgrey sidebar__adds">7 Реклама</div>
+			</aside>
+			<article class="article block__display_flex">
+				<div class="block block__color_lightgrey article__text">5</div>
+				<ul class="article__list block__display_flex">
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+					<li class="block__color_lightgrey article__list-item block__display_flex">6</li>
+				</ul>
+				<div class="block block__color_lightgrey article__block article__block-8">8</div>
+				<div class="block block__color_lightgrey article__block article__block-9">9</div>
+			</article>
+			<hr class="line-separator">
+		</main>
+		<footer class="footer block__display_flex">
+			<div class="block block__visibility_none block__color_darkgrey footer__block_big footer__block-10">10</div>
+			<div class="block block__visibility_none block__color_darkgrey footer__block_big footer__block-11">11</div>
+			<div class="block block__visibility_none block__color_darkgrey footer__block_small footer__block-12">12</div>
+			<div class="block block__visibility_none block__color_darkgrey footer__block_small footer__block-13">13</div>
+		</footer>
+	</div>
+</body>
+
+</html>
