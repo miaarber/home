@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Верстка макета с помощью grid-layout</title>
+    <!-- Образец: https://jsfiddle.net/anton4ept/6qshpLo8/ -->
+    <!-- Задание:
+
+    1) @media screen and (min-width: 0px) and (max-width: 640px)
+    --- Блоки в столбик
+    --- Цвет блоков: 1, 3, 5 - темно-серый; 4, 6, 8, 9, 12, 13 - светло-серый
+    --- Разделители (hr - 2 шт.) скрыты
+    --- Блоки 2, 7, 10, 11 скрыты
+    --- Блок 4 размещен после блока 9
+    --- Блоки 6 - круги в две колонки (последний - непарный - в левой колонке)
+    --- Блоки 12 и 13 в две колонки
+
+    2) @media screen and (min-width: 641px) and (max-width: 1024px)
+    --- Блоки в столбик
+    --- Цвет блоков: 1, 3, 4, 8-11 - темно-серый; 6, 7 - светло-серый
+    --- Блоки 2, 5, 12, 13 скрыты
+    --- Ширина блоков: блоки 1 - 1/3, 3 - 2/3
+    --- Блоки 6 - прямоугольники в три колонки (последний - в левой колонке)
+    --- Разделители (hr - 2 шт.) - первый скрыт, второй размещен после блока 7
+    
+    3) @media screen and (min-width: 1025px) and (max-width: 1199px)
+    --- Все блоки показаны
+    --- Цвет блоков: 1-4, 7, 10-13 - темно-серый; 5, 6, 8, 9 - светло-серый
+    --- Разделители (hr - 2 шт.) показаны
+    --- Ширина блоков: блоки 1-3 - 1:2:4; блоки aside и section - 1.5:6; блоки 10, 11 и 12+13 - 1:1:1
+    --- Блоки 4 и 7 в столбик, блок 7 примыкает к низу контейнера
+    --- Блоки 6 - прямоугольники (ширина фиксированная) в четыре колонки (последние - в левых колонках)
+    --- Блоки 8 и 9 - (ширина фиксированная) в четыре колонки
+    --- Блоки 12 и 13 размещены в правой колонки, каждый из них по высоте занимает половину высоты колонки
+
+    4) @media screen and (min-width: 1200px)
+    --- Максимальная ширина 1200px и центрирование по горизонтали 
+    --- Блоки 6 - квадраты (ширина фиксированная) в четыре колонки (последние - в левых колонках)
+    --- Остальное - то же, что и в предыдущем разрешении -->
+
+
+    <!-- Можно добавлять классы,  id, текст, элементы для создания выпадающего меню (input, label)
+    Структуру html менять запрещено -->
+
+    <!-- Размеры блоков по умолчанию (ширина х высота):
+    1: 120х110
+    2: 250х110
+    3: 510х110
+    4: 180х330
+    5: 750х210
+    6: 130х150
+    7: 180х130
+    8: 350х200
+    9: 350х200
+    10: 300х180
+    11: 300х180
+    12: 300х75
+    13: 300х75 -->
+
+    <style>
+        /* 1) @media screen and (min-width: 0px) and (max-width: 640px)
+        --- Блоки в столбик
+        --- Цвет блоков: 1, 3, 5 - темно-серый; 4, 6, 8, 9, 12, 13 - светло-серый
+        --- Разделители (hr - 2 шт.) скрыты
+        --- Блоки 2, 7, 10, 11 скрыты
+        --- Блок 4 размещен после блока 9
+        --- Блоки 6 - круги в две колонки (последний - непарный - в левой колонке)
+        --- Блоки 12 и 13 в две колонки */
+        @media screen and (min-width: 0px) and (max-width: 640px) {
+            /* --------------- Цвет блоков */
+            /* 1, 3, 5 - темно-серый */
+            header>div,
+            article {
+                background-color: #888888;
+            }
+            /* 4, 6, 8, 9, 12, 13 - светло-серый */
+            aside>ul,
+            section>ul>li,
+            section>div,
+            footer>div:nth-child(n+2) {
+                background-color: #dddddd;
+            }
+
+            /* --------------- Рамеры блоков */
+            /* Блоки 1, 3, 8, 9 */
+            header>div,
+            section>div {
+                height: 85px;
+            }
+            /* Блок 4 */
+            aside>ul {
+                height: 300px;
+            }
+            /* Блок 5 */
+            article {
+                height: 200px;
+            }
+            /* Блоки 12 и 13 */
+            footer>div:nth-child(n+2) {
+                height: 50px;
+            }
+            
+            /* Скрытие разделителя */
+            hr {
+                display: none;
+            }
+
+            /* Скрытие блоков 2, 7, 10, 11 */
+            header>div:nth-child(2),
+            aside>div,
+            footer>div:nth-child(1),
+            footer>div:nth-child(2) {
+                display: none;
+            }
+
+            div {
+                margin-bottom: 10px;
+			}
+
+            /* --------------- Сетка
+            /* Общая сетка
+            Колонки: 2 шт. (исходя из наличия двух колонок в подвале)
+            Строки: 3 шт (по одной на каждый большой раздел: header, main, footer) */
+            body { 
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 0vw;
+            }
+            /* Сетка основной части
+            Колонки: 1 шт
+            Строки: 2 шт */
+            main {
+                display: grid;
+                grid-template-columns: 1rf;
+                grid-gap: 0vw;
+            }
+
+            /* Сетка списка в section (блоки 6)
+            Колонки: 2 шт
+            Строки: 4 шт */
+            section>ul {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 0vw;
+            }
+
+            /* Сетка подвала */
+            footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 1vw;
+            }
+
+
+            /* --------------- Распределение по ширине */
+            /* Общая сетка */
+            header {
+                grid-row: 1/2;
+                grid-column: 1/3;
+            }
+
+            body>hr:nth-child(2) {
+                grid-row: 2/3;
+                grid-column: 1/3;
+                width: 100%;
+            }
+
+            main {
+                grid-row: 3/4;
+                grid-column: 1/3;
+            }
+
+            body>hr:nth-child(4) {
+                grid-row: 4/5;
+                grid-column: 1/3;
+                width: 100%;
+            }
+
+            footer {
+                grid-row: 5/6;
+                grid-column: 1/3;
+            }
+
+            /* Сетка основной части */
+            aside {
+                grid-row: 5/6;
+                grid-column: 1/2;
+            }
+
+            /* Сетка списка в section (блоки 6) */
+            section>ul>li:nth-child(1) {
+                grid-row: 1/2;
+                grid-column: 1/2;
+                /* background-color: red; */
+            }
+            section>ul>li:nth-child(2) {
+                grid-row: 1/2;
+                grid-column: 2/3;
+                /* background-color: orange; */
+            }
+            section>ul>li:nth-child(3) {
+                grid-row: 2/3;
+                grid-column: 1/2;
+                /* background-color: yellow; */
+            }
+            section>ul>li:nth-child(4) {
+                grid-row: 2/3;
+                grid-column: 2/3;
+                /* background-color: green; */
+            }
+            section>ul>li:nth-child(5) {
+                grid-row: 3/4;
+                grid-column: 1/2;
+                /* background-color: skyblue; */
+            }
+            section>ul>li:nth-child(6) {
+                grid-row: 3/4;
+                grid-column: 2/3;
+                /* background-color: darkblue; */
+            }
+            section>ul>li:nth-child(7) {
+                grid-row: 4/5;
+                grid-column: 1/2;
+                /* background-color: violet; */
+            }
+            /* Сетка блоков в подвале */
+            footer>div:nth-child(3) {
+                grid-row: 1/2;
+                grid-column: 1/2;
+            }
+            footer>div:nth-child(4) {
+                grid-row: 1/2;
+                grid-column: 2/3;
+            }
+
+            /* --------------- Список в section */
+            section>ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+            section>ul>li {
+                width: 45vw;
+                height: 45vw;
+                margin: 10px 0 10px;
+                border-radius: 50%;
+                border: 2px solid black;
+            }
+            /* --------------- Список в aside */
+            aside>ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+
+
+
+
+            
+        }
+
+        /* 2) @media screen and (min-width: 641px) and (max-width: 1024px)
+        --- Блоки в столбик
+        --- Цвет блоков: 1, 3, 4, 8-11 - темно-серый; 6, 7 - светло-серый
+        --- Блоки 2, 5, 12, 13 скрыты
+        --- Ширина блоков: блок 1 - 1/3, 3 - 2/3
+        --- Блоки 6 - прямоугольники в три колонки (последний - в левой колонке)
+        --- Разделители (hr - 2 шт.) - первый скрыт, второй размещен после блока 7 */
+        @media screen and (min-width: 641px) and (max-width: 1024px) {
+            /* --------------- Цвет блоков */
+            /* 1, 3, 4, 8-11 - темно-серый */
+            header>div,
+            aside>ul,
+            section>div,
+            footer>div:nth-child(-n+3) {
+                background-color: #888888;
+            }
+            /* 6, 7 - светло-серый */
+            section>ul>li,
+            aside>div {
+                background-color: #dddddd;
+            }
+
+            /* Скрытие блоков 2, 5, 12, 13 */
+            header>div:nth-child(2),
+            article,
+            footer>div:nth-child(n+3) {
+                display: none;
+            }
+
+            div {
+                margin-bottom: 10px;
+			}
+
+            /* --------------- Размеры блоков */
+            /* Блоки 1, 3, 8-11 */
+            header>div,
+            section>div,
+            footer>div:nth-child(-n+2),
+            aside>div {
+                height: 85px;
+            }
+            /* Блок 4 */
+            aside>ul {
+                height: 100px;
+            }
+            
+            /* Скрытие разделителя */
+            hr {
+                display: none;
+            }
+
+            
+            /* Сетка шапки */
+            header {
+                display: grid;
+                grid-template-columns: 1.2fr 2.5fr;
+                grid-gap: 3vw;
+            }
+
+            /* Сетка списка в section (блоки 6)
+            Колонки: 3 шт
+            Строки: 3 шт */
+            section>ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 2vw;
+            }
+            
+
+            /* --------------- Список в section */
+            section>ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+            section>ul>li {
+                height: 120px;
+                margin: 10px 0 10px;
+            }
+            /* --------------- Список в aside */
+            aside>ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+
+
+
+        }
+
+        /* 3) @media screen and (min-width: 1025px) and (max-width: 1199px)
+        --- Все блоки показаны
+        --- Цвет блоков: 1-4, 7, 10-13 - темно-серый; 5, 6, 8, 9 - светло-серый
+        --- Разделители (hr - 2 шт.) показаны
+        --- Ширина блоков: блоки 1-3 - 1:2:4; блоки aside и section - 1.5:6; блоки 10, 11 и 12+13 - 1:1:1
+        --- Блоки 4 и 7 в столбик, блок 7 примыкает к низу контейнера
+        --- Блоки 6 - прямоугольники (ширина фиксированная) в четыре колонки (последние - в левых колонках)
+        --- Блоки 8 и 9 - (ширина фиксированная) в четыре колонки
+        --- Блоки 12 и 13 размещены в правой колонки, каждый из них по высоте занимает половину высоты колонки */
+        @media screen and (min-width: 1025px) and (max-width: 1199px) {
+            /* --------------- Цвет блоков */
+            /* 1-4, 7, 10-13 - темно-серый */
+            header>div,
+            aside>ul,
+            aside>div,
+            footer>div {
+                background-color: #888888;
+            }
+            /* 5, 6, 8, 9 - светло-серый */
+            article,
+            section>ul>li,
+            section>div {
+                background-color: #dddddd;
+            }
+
+            div {
+                margin-bottom: 10px;
+			}
+
+            /* hr {
+                display: none;
+            } */
+
+
+            /* --------------- Сетка */
+            #header {
+                grid-area: header;
+            }
+            #aside {
+                grid-area: aside;
+            }
+            #section {
+                grid-area: section;
+            }
+            #footer {
+                grid-area: footer;
+            }
+            #blocks-6 {
+                grid-area: blocks-6;
+            }
+            #block-7 {
+                grid-column: 1/2;
+                grid-row: 3/4;
+            }
+            #block-8 {
+                grid-area: block-8;
+            }
+            #block-9 {
+                grid-area: block-9;
+            }
+
+
+            header {
+                display: grid;
+                grid-template-columns: 15% 1fr 2fr;
+                grid-gap: 10px;
+                height: 100px;
+            }
+            main {
+                display: grid;
+                grid-template-areas:
+                "aside section";
+                grid-template-rows: 1fr;
+                grid-template-columns: 20% 1fr;
+                grid-gap: 10px;
+            }
+            aside {
+                display: grid;
+                grid-template-rows: 270px 140px;
+                
+            }
+            section {
+                display: grid;
+                grid-template-areas:
+                "article article"
+                "blocks-6 blocks-6"
+                "block-8 block-9";
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+            }
+            article,
+            section>div {
+                height: 165px;
+            }
+            article {
+                grid-column: 1/3;
+                grid-row: 1/2;
+            }
+            /* --------------- Список в section */
+            section>ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-gap: 2vw;
+
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+            section>ul>li {
+                height: 120px;
+                margin: 10px 0 10px;
+            }
+            /* --------------- Список в aside */
+            aside>ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 10px;
+            }
+
+            /* footer>div {
+                height: 150px;
+            } */
+
+            footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 75px 75px;
+                grid-gap: 2vw;
+            }
+
+            footer>:nth-child(1) {
+                grid-column: 1/2;
+                grid-row: 1/3;
+            }
+            footer>:nth-child(2) {
+                grid-column: 2/3;
+                grid-row: 1/3;
+            }
+            footer>:nth-child(3) {
+                grid-column: 3/4;
+                grid-row: 1/2;
+            }
+            footer>:nth-child(4) {
+                grid-column: 3/4;
+                grid-row: 2/3;
+            }
+
+        }
+
+        /* 4) @media screen and (min-width: 1200px)
+        --- Максимальная ширина 1200px и центрирование по горизонтали 
+        --- Блоки 6 - квадраты (ширина фиксированная) в четыре колонки (последние - в левых колонках)
+        --- Остальное - то же, что и в предыдущем разрешении */
+        @media screen and (min-width: 1200px) {
+            body {
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* --------------- Цвет блоков */
+            /* 1-4, 7, 10-13 - темно-серый */
+            header>div,
+            aside>ul,
+            aside>div,
+            footer>div {
+                background-color: #888888;
+            }
+            /* 5, 6, 8, 9 - светло-серый */
+            article,
+            section>ul>li,
+            section>div {
+                background-color: #dddddd;
+            }
+
+            div {
+                margin-bottom: 10px;
+			}
+
+            /* hr {
+                display: none;
+            } */
+
+
+            /* --------------- Сетка */
+            #header {
+                grid-area: header;
+            }
+            #aside {
+                grid-area: aside;
+            }
+            #section {
+                grid-area: section;
+            }
+            #footer {
+                grid-area: footer;
+            }
+            #blocks-6 {
+                grid-area: blocks-6;
+            }
+            #block-7 {
+                grid-column: 1/2;
+                grid-row: 3/4;
+            }
+            #block-8 {
+                grid-area: block-8;
+            }
+            #block-9 {
+                grid-area: block-9;
+            }
+
+
+            header {
+                display: grid;
+                grid-template-columns: 15% 1fr 2fr;
+                grid-gap: 10px;
+                height: 100px;
+            }
+            main {
+                display: grid;
+                grid-template-areas:
+                "aside section";
+                grid-template-rows: 1fr;
+                grid-template-columns: 20% 1fr;
+                grid-gap: 10px;
+            }
+            aside {
+                display: grid;
+                grid-template-rows: 270px 140px;
+                
+            }
+            section {
+                display: grid;
+                grid-template-areas:
+                "article article"
+                "blocks-6 blocks-6"
+                "block-8 block-9";
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+            }
+            article,
+            section>div {
+                height: 165px;
+            }
+            article {
+                grid-column: 1/3;
+                grid-row: 1/2;
+            }
+            /* --------------- Список в section */
+            section>ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-gap: 2vw;
+
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 10px;
+            }
+            section>ul>li {
+                height: 120px;
+                margin: 10px 0 10px;
+            }
+            /* --------------- Список в aside */
+            aside>ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 10px;
+            }
+
+            /* footer>div {
+                height: 150px;
+            } */
+
+            footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 75px 75px;
+                grid-gap: 2vw;
+            }
+
+            footer>:nth-child(1) {
+                grid-column: 1/2;
+                grid-row: 1/3;
+            }
+            footer>:nth-child(2) {
+                grid-column: 2/3;
+                grid-row: 1/3;
+            }
+            footer>:nth-child(3) {
+                grid-column: 3/4;
+                grid-row: 1/2;
+            }
+            footer>:nth-child(4) {
+                grid-column: 3/4;
+                grid-row: 2/3;
+            }
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </header>
+    <hr>
+    <main>
+        <aside id="aside">
+            <ul id="block-4">4</ul>
+            <div id="block-7">7</div>
+        </aside>
+        <section id="section">
+            <article>5</article>
+            <ul id="blocks-6">
+                <li>6</li>
+                <li>6</li>
+                <li>6</li>
+                <li>6</li>
+                <li>6</li>
+                <li>6</li>
+                <li>6</li>
+            </ul>
+            <div id="block-8">8</div>
+            <div id="block-9">9</div>
+        </section>
+    </main>
+    <hr>
+    <footer id="footer">
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+    </footer>
+</body>
+</html>
