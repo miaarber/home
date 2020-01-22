@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Секундомер</title>
+    <style>
+        #stopwatch {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid yellow;
+            background-color: skyblue;
+            margin: 30px;
+            position: relative;
+        }
+        /* Цифры вокруг секундомера */
+        #zero,
+        #five,
+        #ten,
+        #fifteen {
+            position: absolute;
+            font-weight: bold;
+            color: skyblue;
+            font-size: 20px;
+        }
+        #zero {
+            bottom: 200px;
+            left: 100px;
+        }
+        #five {
+            bottom: 185px;
+            left: 155px;
+        }
+        #ten {
+            top: 35px;
+            left: 190px;
+        }
+        #fifteen {
+            bottom: 90px;
+            left: 200px;
+        }
+        /* Стрелка */
+        #arrow {
+            width: 5px;
+            height: 90px;
+            background-color: yellow;
+            border-top: 3px solid black;
+            position: absolute;
+            top: 10px;
+            left: 100px;
+            transform-origin: center bottom;
+            animation: stepAnimation 60s linear infinite;
+        }
+        @keyframes stepAnimation {
+            from { 
+                transform: rotate(0deg); 
+            }
+            to { 
+                transform: rotate(360deg); 
+            }         
+        }
+        #board {
+            width: 100px;
+            height: 50px;
+            border: 2px solid yellow;
+            position: relative;
+            left: 80px;
+            background-color: skyblue;
+        }
+        #figure-first {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            overflow: hidden;
+        }
+        #figure-second {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            left: 60px;
+            overflow: hidden;
+        }
+        /* Параметры анимации для десятков.
+        Десятки (от 0 до 5) меняются каждые 10 секунд, 
+        т.е. 6 раз за 60 секунд */
+        #figure-first>div {
+            animation: translate1 60s steps(6) infinite;
+        }  
+        /* Параметры анимации для единиц.
+        Единицы (от 0 до 9) меняются каждую секунду,
+        т.е. 10 раз за 10 секунд */
+        #figure-second>div {
+            animation: translate2 10s steps(10) infinite;
+        } 
+        /* Анимация для десятков */
+        @keyframes translate1 {
+            from { 
+                transform: translate(0, 0);
+            }
+            to { 
+                transform: translate(0, -600%);
+            }         
+        } 
+        /* Анимация для единиц */
+        @keyframes translate2 {
+            from { 
+                transform: translate(0, 0);
+            }
+            to { 
+                transform: translate(0, -1000%);
+            }         
+        }  
+        #figure-first,
+        #figure-second {
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Секундомер -->
+    <div id="stopwatch"> 
+        <!-- Стрелка -->
+        <div id="arrow"></div>
+
+        <!-- Цифры вокруг секундомера -->
+        <div id="zero">0</div>
+        <div id="five">5</div>
+        <div id="ten">10</div>
+        <div id="fifteen">15</div>
+    </div>
+    <div id="board">
+        <!-- Десятки -->
+        <div id="figure-first">
+            <div>0</div> 
+            <div>1</div>       
+            <div>2</div>       
+            <div>3</div>       
+            <div>4</div>       
+            <div>5</div>       
+        </div>
+        <!-- Единицы -->
+        <div id="figure-second">
+            <div>0</div>       
+            <div>1</div>       
+            <div>2</div>       
+            <div>3</div>       
+            <div>4</div>       
+            <div>5</div>       
+            <div>6</div>       
+            <div>7</div>       
+            <div>8</div>       
+            <div>9</div>       
+        </div>
+    </div>
+<!-- overflow: hidden, меняем top у блоков с relative -->
+    </div>
+</body>
+</html>

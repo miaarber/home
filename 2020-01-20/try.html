@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function isPal(value){
+    var palArr = value.split('');
+    var reverseVal='';
+    for(var i=0; i<palArr.length; i++){
+    if(palArr[i]===' ') palArr.splice(i,1);
+    }
+    var inputValue = palArr.join('').toLowerCase();
+    reverseVal = palArr.reverse().join('').toLowerCase();
+    if(inputValue.indexOf(reverseVal)!=-1) return true;
+    else return false;
+
+    }
+    console.log(isPal('Anna')); // true
+    console.log(isPal('А роза упала на лапу Азора')); //true
+    console.log(isPal('Вася')); //false
+    console.log(isPal('12321')); //true
+    console.log(isPal('123212')); //false
+    </script>
+</body>
+</html>

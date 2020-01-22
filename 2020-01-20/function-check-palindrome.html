@@ -1,0 +1,50 @@
+<!-- Задание
+Составить программу, запрашивающую у пользователя строку и анализирующую ее на предмет, 
+является ли введенная строка палиндромом. Проверка должна быть вынесена в функцию. 
+Примеры для проверки: "abba", "А роза упала на лапу Азора"
+
+Функция должна давать правильный результат в случаях 
+1) наличия в строке пробелов, 
+2) знаков препинания, 
+3) символов верхнего и нижнего регистра 
+(мнемоники и похожие буквы в разных раскладках не проверяем). -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Функция проверки палиндрома</title>
+</head>
+<body>
+    <script>
+        function palindromeOrNot (forCheck) {
+            //разбитие посимвольно и превращение в массив
+            var forCheckArray = forCheck.split('');
+            //игнорирование пробелов
+            var forCheckSpaceIgnore='';
+            for(var i=0; i<forCheckArray.length; i++) {
+                if(forCheckArray[i]===' ') forCheckArray.splice(i,1);
+            }
+            //игнорирование регистра
+            var forCheckCaseIgnore = forCheckArray.join('').toLowerCase();
+            forCheckSpaceIgnore = forCheckArray.reverse().join('').toLowerCase();
+
+            //игнорирование знаков пунктуации (не получается правильно прописать)
+            //var forCheckPunctuationIgnore = forCheckArray.replace(/[/.,!?;]*/g, '');
+            //forCheckCaseIgnore = forCheckArray.join('').toLowerCase();
+            //forCheckSpaceIgnore = forCheckArray.reverse().join('').toLowerCase();
+
+            if (forCheckCaseIgnore.indexOf(forCheckSpaceIgnore)  !=-1) {
+                return 'This is palindrome'; 
+            } else {
+                return 'This is not palindrome'; 
+            }
+        }
+
+        test = palindromeOrNot (prompt('Введите слово или фразу'));
+        alert(test);   
+    </script>
+</body>
+</html>
