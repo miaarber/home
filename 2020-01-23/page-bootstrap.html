@@ -1,0 +1,231 @@
+<!-- ??????????
+КАК ОТТОЛКНУТЬ 7-ОЙ БЛОК ОТ 4-ГО,
+ЕСЛИ БЛОК 4 И 7 - ЭТО СТРОКИ ВНУТРИ КОЛОНКИ
+??????????????? 
+
+Для наглядности outline: 1px solid green; -->
+
+<!-- .block-1 {
+    width: 120px;
+    min-height: 110px;
+}
+.block-2 {
+    width: 250px;
+    height: 110px;
+}
+.block-3 {
+    width: 510px;
+    height: 110px;
+}
+.block-4 {
+    width: 180px;
+    height: 330px;
+}
+.block-5 {
+    width: 750px;
+    height: 210px;
+}
+.block-6 {
+    width: 130px;
+    height: 150px;
+}
+.block-7 {
+    width: 180px;
+    height: 130px;
+}
+.block-8 {
+    width: 350px;
+    height: 200px;
+}
+.block-9 {
+    width: 350px;
+    height: 200px;
+}
+.block-10 {
+    width: 300px;
+    height: 180px;
+}
+.block-11 {
+    width: 300px;
+    height: 180px;
+}
+.block-12 {
+    width: 300px;
+    height: 75px;
+}
+.block-13 {
+    width: 300px;
+    height: 75px;
+} -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Bootstrap .container</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+
+        div {
+            padding: 0;
+        }
+        
+        .block-1,
+        .block-2,
+        .block-3,
+        .block-4,
+        .block-7,
+        .block-9,
+        .block-10,
+        .block-11,
+        .block-12,
+        .block-13 {
+            background-color: #aaaaaa;
+        }
+
+        .block-5,
+        .block-6,
+        .block-8,
+        .block-9 {
+            background-color: #eeeeee;
+        }
+
+
+
+        .block-6 {
+            width:100px;
+            min-height: 150px;
+            margin: 0 10px 10px 0;
+        }
+        .block-6-lastof {
+            margin-right: 0;
+        }
+
+        .block-4 {
+            min-height: 330px;
+        }
+        .block-7 {
+            min-height: 130px;
+        }
+
+        .block-1,
+        .block-2,
+        .block-3,
+        .block-4,
+        .block-5,
+        .block-7,
+        .block-8,
+        .block-9,
+        .block-10,
+        .block-11 {
+            margin-bottom: 10px;
+        }
+        .header {
+            min-height: 110px;
+        }
+        .main {
+            min-height: 650px;
+        }
+        .footer {
+            min-height: 180px;
+        }
+        .block-5 {
+            min-height: 210px;
+        }
+        .block-8,
+        .block-9 {
+            min-height: 200px;
+        }
+        .block-1,
+        .block-2,
+        .aside,
+        .block-8,
+        .block-10,
+        .block-11 {
+            margin-right: 10px;
+        }
+
+        .block-10,
+        .block-11 {
+            min-height: 180px;
+        }
+        .block-12,
+        .block-13 {
+            min-height: 75px;
+        }
+
+        .block-12 {
+            margin-bottom: 30px;
+        } 
+
+        @media screen and (max-width: 576px) {
+            .block-1,
+            .block-2,
+            .aside,
+            .block-8,
+            .block-10,
+            .block-11 {
+                margin-right: 0;
+            }
+        }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-sm-2 block-1">1</div>
+            <div class="col-sm-3 block-2">2</div>
+            <div class="col-sm block-3">3</div>
+        </div>
+        <div class="row main">
+            <div class="col-sm aside">
+                <div class="row block-4">4</div>
+                <div class="row block-7">7</div>
+            </div>
+
+            <div class="col-sm-9 article">
+                <div class="row block-5">5</div>
+                <div class="row">
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6 block-6-lastof">6</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 block-6">6</div>
+                    <div class="col-sm-3 block-6">6</div>
+                    <div class="col-sm-3 block-6 block-6-lastof">6</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm block-8">8</div>
+                    <div class="col-sm block-9">9</div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-sm block-10">10</div>
+            <div class="col-sm block-11">11</div>
+            <div class="col-sm">
+                <div class="row block-12">12</div>
+                <div class="row block-13">13</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
