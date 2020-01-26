@@ -1,62 +1,4 @@
-<!-- ??????????
-КАК ОТТОЛКНУТЬ 7-ОЙ БЛОК ОТ 4-ГО,
-ЕСЛИ БЛОК 4 И 7 - ЭТО СТРОКИ ВНУТРИ КОЛОНКИ
-??????????????? 
-
-Для наглядности outline: 1px solid green; -->
-
-<!-- .block-1 {
-    width: 120px;
-    min-height: 110px;
-}
-.block-2 {
-    width: 250px;
-    height: 110px;
-}
-.block-3 {
-    width: 510px;
-    height: 110px;
-}
-.block-4 {
-    width: 180px;
-    height: 330px;
-}
-.block-5 {
-    width: 750px;
-    height: 210px;
-}
-.block-6 {
-    width: 130px;
-    height: 150px;
-}
-.block-7 {
-    width: 180px;
-    height: 130px;
-}
-.block-8 {
-    width: 350px;
-    height: 200px;
-}
-.block-9 {
-    width: 350px;
-    height: 200px;
-}
-.block-10 {
-    width: 300px;
-    height: 180px;
-}
-.block-11 {
-    width: 300px;
-    height: 180px;
-}
-.block-12 {
-    width: 300px;
-    height: 75px;
-}
-.block-13 {
-    width: 300px;
-    height: 75px;
-} -->
+<!-- Для наглядности outline: 1px solid green; -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -109,10 +51,10 @@
         }
 
         .block-4 {
-            min-height: 330px;
+            height: 330px;
         }
         .block-7 {
-            min-height: 130px;
+            height: 130px;
         }
 
         .block-1,
@@ -130,9 +72,12 @@
         .header {
             min-height: 110px;
         }
-        .main {
-            min-height: 650px;
+
+        .aside {
+            padding-left: 0;
+            padding-right: 0;
         }
+
         .footer {
             min-height: 180px;
         }
@@ -165,6 +110,16 @@
             margin-bottom: 30px;
         } 
 
+        
+        .blocks-6 {
+            padding: 0;
+        }
+
+        .article {
+            padding-left: 10px;
+        }
+        
+
         @media screen and (max-width: 576px) {
             .block-1,
             .block-2,
@@ -187,13 +142,22 @@
             <div class="col-sm block-3">3</div>
         </div>
         <div class="row main">
-            <div class="col-sm aside">
-                <div class="row block-4">4</div>
-                <div class="row block-7">7</div>
+            <div class="aside col-sm d-flex align-content-between flex-wrap">
+                <div class="col-12 block-4">4</div>
+                <div class="col-12 block-7">7</div>
             </div>
 
             <div class="col-sm-9 article">
                 <div class="row block-5">5</div>
+                <!-- <div class="blocks-6 col-sm d-flex justify-content-start flex-wrap">
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                    <div class="col-sm block-6">6</div>
+                </div> -->
                 <div class="row">
                     <div class="col-sm block-6">6</div>
                     <div class="col-sm block-6">6</div>
